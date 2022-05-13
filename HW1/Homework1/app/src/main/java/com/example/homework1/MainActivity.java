@@ -4,8 +4,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,29 +17,50 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     EditText edtPhoneNo;
-    Map<Integer,Contact> speedDials;
+    Map<String,Contact> speedDials;
     Button sd1;
     Button sd2;
     Button sd3;
     Button delB;
+    Gson gson;
+    String json;
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor prefsEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+
+        String sp1 = sharedPref.getString("1",null);
+        String sp2 = sharedPref.getString("2",null);
+        String sp3 = sharedPref.getString("3",null);
+
+        prefsEditor = sharedPref.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(null);
+
+        if(sp1.equals(null)) {
+            prefsEditor.putString("1", json);
+        }
+        if(sp2.equals(null)) {
+            prefsEditor.putString("2", json);
+        }
+        if(sp3.equals(null)) {
+            prefsEditor.putString("3", json);
+        }
+        prefsEditor.commit();
 
         edtPhoneNo = (EditText) findViewById(R.id.phoneInput);
-        speedDials = new HashMap<>();
-        speedDials.put(1,null);
-        speedDials.put(2,null);
-        speedDials.put(3,null);
-//        lblinfo = (TextView) findViewById(R.id.lblinfo);
 
         sd1 = (Button)findViewById(R.id.speeddial1);
         sd2 = (Button)findViewById(R.id.speeddial2);
@@ -158,21 +181,33 @@ public class MainActivity extends AppCompatActivity {
                     }
                     break;
                 case R.id.speeddial1:
-                    if(speedDials.get(1)!=null)
+                    gson = new Gson();
+                    json = sharedPref.getString("1", "");
+                    Contact obj1 = gson.fromJson(json, Contact.class);
+
+                    if(obj1!=null)
                     {
-                        edtPhoneNo.setText(speedDials.get(1).getNumber());
+                        edtPhoneNo.setText(obj1.getNumber());
                     }
                     break;
                 case R.id.speeddial2:
-                    if(speedDials.get(2)!=null)
+                    gson = new Gson();
+                    json = sharedPref.getString("2", "");
+                    Contact obj2 = gson.fromJson(json, Contact.class);
+
+                    if(obj2!=null)
                     {
-                        edtPhoneNo.setText(speedDials.get(2).getNumber());
+                        edtPhoneNo.setText(obj2.getNumber());
                     }
                     break;
                 case R.id.speeddial3:
-                    if(speedDials.get(3)!=null)
+                    gson = new Gson();
+                    json = sharedPref.getString("3", "");
+                    Contact obj3 = gson.fromJson(json, Contact.class);
+
+                    if(obj3!=null)
                     {
-                        edtPhoneNo.setText(speedDials.get(3).getNumber());
+                        edtPhoneNo.setText(obj3.getNumber());
                     }
                     break;
             }
@@ -183,14 +218,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateDials() {
-        if(speedDials.get(1)!=null) {
-            sd1.setText(speedDials.get(1).getName());
+        gson = new Gson();
+        json = sharedPref.getString("1", "");
+        Contact obj1 = gson.fromJson(json, Contact.class);
+
+        gson = new Gson();
+        json = sharedPref.getString("2", "");
+        Contact obj2 = gson.fromJson(json, Contact.class);
+
+        gson = new Gson();
+        json = sharedPref.getString("3", "");
+        Contact obj3 = gson.fromJson(json, Contact.class);
+
+        if(obj1!=null) {
+            sd1.setText(obj1.getName());
         }
-        if(speedDials.get(2)!=null) {
-            sd2.setText(speedDials.get(2).getName());
+        if(obj2!=null) {
+            sd2.setText(obj2.getName());
         }
-        if(speedDials.get(3)!=null) {
-            sd3.setText(speedDials.get(3).getName());
+        if(obj3!=null) {
+            sd3.setText(obj3.getName());
         }
     }
 
@@ -207,7 +254,10 @@ public class MainActivity extends AppCompatActivity {
                 String number = ((EditText)alertDialog.findViewById(R.id.numberInput2)).getText().toString();
 
                 if(name != "" && number != "") {
-                    speedDials.put(Integer.parseInt(option), new Contact(name, number));
+                    gson = new Gson();
+                    json = gson.toJson(new Contact(name,number));
+                    prefsEditor.putString(option, json);
+                    prefsEditor.commit();
                     alertDialog.cancel();
                     updateDials();
 
