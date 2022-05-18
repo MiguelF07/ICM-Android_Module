@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
 
+
         String sp1 = sharedPref.getString("1",null);
         String sp2 = sharedPref.getString("2",null);
         String sp3 = sharedPref.getString("3",null);
@@ -49,13 +50,13 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         String json = gson.toJson(null);
 
-        if(sp1.equals(null)) {
+        if(sp1 == (null)) {
             prefsEditor.putString("1", json);
         }
-        if(sp2.equals(null)) {
+        if(sp2 == (null)) {
             prefsEditor.putString("2", json);
         }
-        if(sp3.equals(null)) {
+        if(sp3 == (null)) {
             prefsEditor.putString("3", json);
         }
         prefsEditor.commit();
