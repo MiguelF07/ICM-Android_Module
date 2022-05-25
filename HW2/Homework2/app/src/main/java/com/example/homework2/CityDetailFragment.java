@@ -22,6 +22,7 @@ public class CityDetailFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     public CityUtils.City mCity;
+    public CityUtils.Weather mWeather;
 
     public CityDetailFragment() {
         // Required empty public constructor
@@ -43,6 +44,7 @@ public class CityDetailFragment extends Fragment {
             // Load the content specified by the fragment arguments.
             mCity = CityUtils.CITY_ITEMS.get(getArguments()
                     .getInt(CityUtils.CITY_ID_KEY));
+            mWeather = CityUtils.WEATHER_ITEMS.get(getArguments().getInt(CityUtils.CITY_ID_KEY));
         }
     }
 
@@ -51,9 +53,9 @@ public class CityDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView =
                 inflater.inflate(R.layout.city_detail, container, false);
-        if (mCity != null) {
+        if (mWeather != null) {
             ((TextView) rootView.findViewById(R.id.city_detail))
-                    .setText(mCity.details);
+                    .setText(mWeather.toString());
         }
         return rootView;
     }

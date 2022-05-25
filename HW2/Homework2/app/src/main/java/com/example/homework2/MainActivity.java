@@ -19,9 +19,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private final LinkedList<String> mCityList = new LinkedList<>();
-    private RecyclerView mRecyclerView;
-    private CityListAdapter mAdapter;
     private boolean mTwoPane = false;
 
     @Override
@@ -43,23 +40,6 @@ public class MainActivity extends AppCompatActivity {
         if (findViewById(R.id.city_detail_container) != null) {
             mTwoPane = true;
         }
-
-//        mCityList.add("Aveiro");
-//        mCityList.add("Porto");
-//        mCityList.add("Leiria");
-//        mCityList.add("Braga");
-//        mCityList.add("Viana do Castelo");
-//        mCityList.add("Santarem");
-//        mCityList.add("Guarda");
-//
-//        // Get a handle to the RecyclerView.
-//        mRecyclerView = findViewById(R.id.recyclerview);
-//        // Create an adapter and supply the data to be displayed.
-//        mAdapter = new CityListAdapter(this, mCityList);
-//        // Connect the adapter with the RecyclerView.
-//        mRecyclerView.setAdapter(mAdapter);
-//        // Give the RecyclerView a default layout manager.
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     class SimpleItemRecyclerViewAdapter
@@ -79,16 +59,7 @@ public class MainActivity extends AppCompatActivity {
             return new ViewHolder(view);
         }
 
-        /**
-         * This method implements a listener with setOnClickListener().
-         * When the user taps a song title, the code checks if mTwoPane
-         * is true, and if so uses a fragment to show the song detail.
-         * If mTwoPane is not true, it starts SongDetailActivity
-         * using an intent with extra data about which song title was selected.
-         *
-         * @param holder   ViewHolder
-         * @param position Position of the song in the array.
-         */
+
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = mValues.get(position);
