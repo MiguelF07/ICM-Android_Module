@@ -30,14 +30,6 @@ public class SongDetailFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SongDetailFragment.
-     */
     public static SongDetailFragment newInstance (int selectedSong) {
         SongDetailFragment fragment = new SongDetailFragment();
         // Set the bundle arguments for the fragment.

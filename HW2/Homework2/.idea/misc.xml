@@ -3,8 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33183856502242154" />
+        <entry key="app/src/main/res/layout-sw600dp-land/city_list.xml" value="0.22865905761718747" />
+        <entry key="app/src/main/res/layout-w900dp/city_list.xml" value="0.23719787597656244" />
+        <entry key="app/src/main/res/layout/activity_city_detail.xml" value="0.115625" />
+        <entry key="app/src/main/res/layout/activity_city_list.xml" value="0.14590932777488275" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21738391414351527" />
+        <entry key="app/src/main/res/layout/city_detail.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/city_list.xml" value="0.25052083333333336" />
+        <entry key="app/src/main/res/layout/city_list_content.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/layout/citylist_item.xml" value="0.3145645141601563" />
+        <entry key="app/src/main/res/layout/fragment_city_detail.xml" value="0.115625" />
+        <entry key="app/src/main/res/layout/fragment_city_list.xml" value="0.25065138092756645" />
       </map>
     </option>
   </component>
