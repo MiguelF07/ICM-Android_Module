@@ -20,7 +20,6 @@ public class APIData extends AsyncTask<String, Void, String> {
         String response = "";
         try {
             response = client.newCall(request).execute().body().string();
-            System.out.println(response);
         } catch (IOException e) {
             e.printStackTrace();
             return "";

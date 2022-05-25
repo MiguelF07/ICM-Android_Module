@@ -32,9 +32,7 @@ public class MainActivity extends AppCompatActivity {
 //        toolbar.setTitle(getTitle());
 
         // Get the song list as a RecyclerView.
-        System.out.println("DEBUG1"+findViewById(R.id.city_list).toString());
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.city_list);
-        System.out.println("DEBUG2:"+recyclerView.toString());
         recyclerView.setAdapter
                 (new SimpleItemRecyclerViewAdapter(CityUtils.CITY_ITEMS));
         if (findViewById(R.id.city_detail_container) != null) {
