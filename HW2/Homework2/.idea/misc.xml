@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout-sw600dp-land/city_list.xml" value="0.22865905761718747" />
+        <entry key="app/src/main/res/layout-w600dp/city_detail.xml" value="0.2" />
+        <entry key="app/src/main/res/layout-w600dp/city_list_content.xml" value="0.2" />
+        <entry key="app/src/main/res/layout-w600dp/citylist_item.xml" value="0.2" />
         <entry key="app/src/main/res/layout-w900dp/city_list.xml" value="0.23719787597656244" />
         <entry key="app/src/main/res/layout/activity_city_detail.xml" value="0.115625" />
         <entry key="app/src/main/res/layout/activity_city_list.xml" value="0.14590932777488275" />
